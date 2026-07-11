@@ -190,7 +190,7 @@ input,textarea,select{font-family:'Pretendard Variable',Pretendard,system-ui,san
 class Component extends DCLogic {
   state = {
     name: '', phone: '', email: '', region: '', budget: '', message: '',
-    errors: {}, submitted: false, doneName: '', donePhone: ''
+    errors: {}, submitted: false, sending: false, doneName: '', donePhone: ''
   };
 
   setField(k, v) {
@@ -231,7 +231,27 @@ class Component extends DCLogic {
       onSubmit: () => {
         const errors = this.validate();
         if (Object.keys(errors).length) { this.setState({ errors }); return; }
-        this.setState({ submitted: true, doneName: s.name.trim(), donePhone: s.phone.trim() });
+        if (this.state.sending) return;
+        this.setState({ sending: true });
+        fetch('https://formspree.io/f/mlgqrdzb', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            '문의유형': '창업 문의',
+            '이름': s.name.trim(),
+            '연락처': s.phone.trim(),
+            '이메일': s.email.trim(),
+            '희망지역': s.region,
+            '희망예산': s.budget,
+            '문의내용': s.message.trim(),
+            _subject: '[여우마켓] 창업 문의 — ' + s.name.trim()
+          })
+        }).then(r => {
+          if (!r.ok) throw new Error('send failed');
+          this.setState({ sending: false, submitted: true, doneName: s.name.trim(), donePhone: s.phone.trim() });
+        }).catch(() => {
+          this.setState({ sending: false, errors: { message: '전송에 실패했습니다. 잠시 후 다시 시도해주세요.' } });
+        });
       },
       onReset: () => this.setState({
         name: '', phone: '', email: '', region: '', budget: '', message: '',

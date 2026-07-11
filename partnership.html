@@ -208,7 +208,7 @@ input,textarea,select{font-family:'Pretendard Variable',Pretendard,system-ui,san
 class Component extends DCLogic {
   state = {
     company: '', manager: '', phone: '', email: '', message: '',
-    types: [], errors: {}, submitted: false,
+    types: [], errors: {}, submitted: false, sending: false,
     doneCompany: '', doneEmail: ''
   };
 
@@ -264,7 +264,27 @@ class Component extends DCLogic {
       onSubmit: () => {
         const errors = this.validate();
         if (Object.keys(errors).length) { this.setState({ errors }); return; }
-        this.setState({ submitted: true, doneCompany: s.company.trim(), doneEmail: s.email.trim() });
+        if (this.state.sending) return;
+        this.setState({ sending: true });
+        fetch('https://formspree.io/f/mlgqrdzb', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            '문의유형': '브랜드 제휴',
+            '회사브랜드명': s.company.trim(),
+            '담당자명': s.manager.trim(),
+            '연락처': s.phone.trim(),
+            '이메일': s.email.trim(),
+            '제휴유형': s.types.join(', '),
+            '문의내용': s.message.trim(),
+            _subject: '[여우마켓] 브랜드 제휴 — ' + s.company.trim()
+          })
+        }).then(r => {
+          if (!r.ok) throw new Error('send failed');
+          this.setState({ sending: false, submitted: true, doneCompany: s.company.trim(), doneEmail: s.email.trim() });
+        }).catch(() => {
+          this.setState({ sending: false, errors: { message: '전송에 실패했습니다. 잠시 후 다시 시도해주세요.' } });
+        });
       },
       onReset: () => this.setState({
         company: '', manager: '', phone: '', email: '', message: '',
