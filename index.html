@@ -24,14 +24,15 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
 @keyframes ym-float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
 @keyframes ym-pulse{0%,100%{opacity:1}50%{opacity:.35}}
 
-/* ===== 모바일 대응 v2 (820px 이하) ===== */
+/* ===== 모바일 대응 v3 (820px 이하) ===== */
 @media (max-width:820px){
   html,body{overflow-x:hidden}
   img{max-width:100%}
   /* 다단 격자 -> 1단 세로 배치 */
   [style*="grid-template-columns"]{grid-template-columns:1fr !important}
-  /* 예외: 숫자 통계 줄(구분선 포함)은 가로 유지 */
-  [style*="1fr auto 1fr auto 1fr"]{grid-template-columns:1fr auto 1fr auto 1fr !important}
+  /* 프로세스 카드(제조사->여우마켓->소비자): 세로 배치, 화살표는 아래 방향으로 */
+  [style*="font-size:24px;color:#B0521F"]{transform:rotate(90deg);justify-self:center;margin:2px auto}
+  [style*="padding:40px;display:grid"]{padding:28px 16px !important}
   /* 가로 나열(flex) 줄바꿈 허용 */
   [style*="display:flex"]{flex-wrap:wrap}
   /* 고정 폭 해제 */
