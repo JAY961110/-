@@ -80,6 +80,12 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
   *{box-sizing:border-box}
   .ym-ticker{display:none !important}
 }
+
+/* ===== 지도 반응형 ===== */
+@media (max-width:820px){
+  #ym-map{height:340px !important}
+  [data-screen-label="지점 지도"]{padding:0 18px 8px !important}
+}
 </style>
 </helmet>
 
@@ -127,6 +133,16 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div><div style="font-size:30px;font-weight:700">03</div><div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:3px">경남 지역</div></div>
       </div>
     </div>
+  </div>
+
+  <!-- naver map -->
+  <div style="background:#E9DCC5;color:#2E2419;padding:0 36px 8px" data-screen-label="지점 지도">
+    <div style="display:flex;align-items:baseline;gap:14px;padding-top:44px">
+      <h2 style="font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0">지점 위치</h2>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#B0521F">FIND US ON MAP</span>
+    </div>
+    <p style="font-size:13.5px;color:rgba(46,36,25,.6);margin:10px 0 20px;line-height:1.6">마커를 누르면 지점 정보가 표시됩니다. 일부 지점은 정확한 주소 확정 전이라 대략적인 위치로 표시돼요.</p>
+    <div id="ym-map" style="width:100%;height:440px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(46,36,25,.18);background:#dfd7c6"></div>
   </div>
 
   <!-- stores grid -->
@@ -246,5 +262,56 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
   </div>
 </div>
 </x-dc>
+
+<script>
+(function(){
+  var CID = "wudu005o6g";
+  var params = ["ncpKeyId","ncpClientId"];
+  var pi = 0, done = false;
+  var stores = [
+    {name:"고양 일산점", region:"경기", addr:"고양시 일산동구 성현로4 101~104호", lat:37.709759, lng:126.787576, exact:true},
+    {name:"평택점",     region:"경기", addr:"평택시 이충로 49-29 103호",        lat:37.060193, lng:127.065715, exact:true},
+    {name:"부천점",     region:"경기", addr:"부천시 (정확한 주소 준비중)",       lat:37.5035,   lng:126.7660,   exact:false},
+    {name:"통영점",     region:"경남", addr:"통영시 (정확한 주소 준비중)",       lat:34.8544,   lng:128.4331,   exact:false},
+    {name:"김해점",     region:"경남", addr:"김해시 (정확한 주소 준비중)",       lat:35.2285,   lng:128.8894,   exact:false},
+    {name:"거제점",     region:"경남", addr:"거제시 (정확한 주소 준비중)",       lat:34.8806,   lng:128.6211,   exact:false}
+  ];
+  function msg(t){var el=document.getElementById("ym-map");if(el)el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;font-size:14px;color:#7a6a52;line-height:1.6;font-family:\'Pretendard Variable\',sans-serif">'+t+'</div>';}
+  window.navermap_authFailure = function(){ if(!done){ pi++; loadSDK(); } };
+  function loadSDK(){
+    if(pi >= params.length){ msg("지도를 불러오지 못했습니다.<br>네이버 클라우드 콘솔에서 <b>Client ID</b>와 <b>웹 서비스 URL(도메인) 등록</b>을 확인해 주세요."); return; }
+    var old = document.getElementById("naver-maps-sdk"); if(old) old.remove();
+    var sc = document.createElement("script"); sc.id = "naver-maps-sdk";
+    sc.src = "https://oapi.map.naver.com/openapi/v3/maps.js?" + params[pi] + "=" + CID;
+    sc.onload = function(){ setTimeout(function(){ if(window.naver && naver.maps && !done){ initMap(); } }, 250); };
+    sc.onerror = function(){ pi++; loadSDK(); };
+    document.head.appendChild(sc);
+  }
+  function initMap(){
+    var el = document.getElementById("ym-map");
+    if(!el || !(window.naver && naver.maps)) return;
+    var map = new naver.maps.Map(el, { zoom:8, center:new naver.maps.LatLng(36.2,127.6), scaleControl:false, mapDataControl:false });
+    var bounds = new naver.maps.LatLngBounds();
+    var iw = new naver.maps.InfoWindow({ maxWidth:240, backgroundColor:"#fff", borderColor:"#E34802", borderWidth:2, anchorSize:new naver.maps.Size(12,10), pixelOffset:new naver.maps.Point(0,-6) });
+    stores.forEach(function(st){
+      var pos = new naver.maps.LatLng(st.lat, st.lng);
+      bounds.extend(pos);
+      var mk = new naver.maps.Marker({ position:pos, map:map, title:st.name });
+      naver.maps.Event.addListener(mk, "click", function(){
+        var note = st.exact ? "" : '<div style="font-size:11px;color:#B0521F;margin-top:4px">※ 대략적 위치</div>';
+        iw.setContent('<div style="padding:12px 14px;font-family:\'Pretendard Variable\',sans-serif;min-width:150px">'
+          +'<div style="font-weight:800;font-size:15px;color:#2E2419">🦊 여우마켓 '+st.name+'</div>'
+          +'<div style="font-size:11px;color:#B0521F;font-weight:600;margin-top:2px">'+st.region+'</div>'
+          +'<div style="font-size:12.5px;color:#555;margin-top:6px;line-height:1.5">'+st.addr+'</div>'+note+'</div>');
+        iw.open(map, mk);
+      });
+    });
+    map.fitBounds(bounds, { top:50, right:50, bottom:50, left:50 });
+    done = true;
+  }
+  function waitContainer(){ if(document.getElementById("ym-map")){ loadSDK(); } else { setTimeout(waitContainer, 300); } }
+  if(document.readyState === "loading"){ document.addEventListener("DOMContentLoaded", waitContainer); } else { waitContainer(); }
+})();
+</script>
 </body>
 </html>
