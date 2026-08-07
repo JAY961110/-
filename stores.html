@@ -83,7 +83,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
 
 /* ===== 지도 반응형 ===== */
 @media (max-width:820px){
-  #ym-map{height:340px !important}
+  #ym-map{height:260px !important;max-width:100% !important}
   [data-screen-label="지점 지도"]{padding:0 18px 8px !important}
 }
 </style>
@@ -142,7 +142,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
       <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#B0521F">FIND US ON MAP</span>
     </div>
     <p style="font-size:13.5px;color:rgba(46,36,25,.6);margin:10px 0 20px;line-height:1.6">마커를 누르면 지점 정보가 표시됩니다. 일부 지점은 정확한 주소 확정 전이라 대략적인 위치로 표시돼요.</p>
-    <div id="ym-map" style="width:100%;height:440px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(46,36,25,.18);background:#dfd7c6"></div>
+    <div id="ym-map" style="width:100%;max-width:640px;height:320px;border-radius:16px;overflow:hidden;border:1.5px solid rgba(46,36,25,.18);background:#dfd7c6"></div>
   </div>
 
   <!-- stores grid -->
@@ -160,8 +160,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">고양 일산점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경기</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>고양시 일산동구 성현로4, 101~104호</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -173,8 +173,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">평택점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경기</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>평택시 이충로 49-29, 103호</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -186,8 +186,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">부천점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경기</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>부천시 상일로 14-19</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -206,8 +206,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">통영점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경남</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>통영시 (주소 준비중)</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -219,8 +219,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">김해점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경남</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>김해시 (주소 준비중)</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -232,8 +232,8 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         <div style="padding:20px 22px 22px">
           <div style="display:flex;justify-content:space-between;align-items:center"><div style="font-weight:800;font-size:20px">거제점</div><span style="border:1px solid rgba(46,36,25,.3);border-radius:999px;padding:4px 10px;font-size:11px;font-weight:600">경남</span></div>
           <div style="margin-top:14px;display:flex;flex-direction:column;gap:7px;font-size:12.5px;color:rgba(46,36,25,.65)">
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>주소 정보 입력 예정</span></div>
-            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>영업시간 정보 입력 예정</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">ADDRESS</span><span>거제시 (주소 준비중)</span></div>
+            <div style="display:flex;gap:8px"><span style="font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;color:#B0521F;min-width:52px;padding-top:1px">OPEN</span><span>매일 오전 10:00 – 오후 9:00</span></div>
           </div>
         </div>
       </div>
@@ -271,7 +271,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
   var stores = [
     {name:"고양 일산점", region:"경기", addr:"고양시 일산동구 성현로4 101~104호", lat:37.709759, lng:126.787576, exact:true},
     {name:"평택점",     region:"경기", addr:"평택시 이충로 49-29 103호",        lat:37.060193, lng:127.065715, exact:true},
-    {name:"부천점",     region:"경기", addr:"부천시 (정확한 주소 준비중)",       lat:37.5035,   lng:126.7660,   exact:false},
+    {name:"부천점",     region:"경기", addr:"부천시 상일로 14-19",              lat:37.491213, lng:126.742943, exact:true},
     {name:"통영점",     region:"경남", addr:"통영시 (정확한 주소 준비중)",       lat:34.8544,   lng:128.4331,   exact:false},
     {name:"김해점",     region:"경남", addr:"김해시 (정확한 주소 준비중)",       lat:35.2285,   lng:128.8894,   exact:false},
     {name:"거제점",     region:"경남", addr:"거제시 (정확한 주소 준비중)",       lat:34.8806,   lng:128.6211,   exact:false}
@@ -290,7 +290,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
   function initMap(){
     var el = document.getElementById("ym-map");
     if(!el || !(window.naver && naver.maps)) return;
-    var map = new naver.maps.Map(el, { zoom:8, center:new naver.maps.LatLng(36.2,127.6), scaleControl:false, mapDataControl:false });
+    var map = new naver.maps.Map(el, { zoom:7, center:new naver.maps.LatLng(36.3,127.8), scaleControl:false, mapDataControl:false });
     var bounds = new naver.maps.LatLngBounds();
     var iw = new naver.maps.InfoWindow({ maxWidth:240, backgroundColor:"#fff", borderColor:"#E34802", borderWidth:2, anchorSize:new naver.maps.Size(12,10), pixelOffset:new naver.maps.Point(0,-6) });
     stores.forEach(function(st){
@@ -306,7 +306,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
         iw.open(map, mk);
       });
     });
-    map.fitBounds(bounds, { top:50, right:50, bottom:50, left:50 });
+    map.fitBounds(bounds, { top:28, right:28, bottom:28, left:28 });
     done = true;
   }
   function waitContainer(){ if(document.getElementById("ym-map")){ loadSDK(); } else { setTimeout(waitContainer, 300); } }
