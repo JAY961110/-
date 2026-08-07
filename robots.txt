@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+User-agent: Yeti
+Allow: /
+
+Sitemap: https://www.xn--hz2b15t2qan2y.com/sitemap.xml
