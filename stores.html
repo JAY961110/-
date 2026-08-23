@@ -7,7 +7,6 @@
 <meta name="description" content="가까운 여우마켓 지점을 찾아보세요.">
 <link rel="icon" type="image/png" href="fox.png">
 
-<script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
@@ -62,7 +61,9 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
   [style*="padding:20px 36px"]{padding:16px 18px !important}
   [style*="padding:16px 36px"]{padding:12px 18px !important}
   /* 상단 메뉴: 가운데 정렬로 정돈 */
-  [style*="justify-content:space-between"][style*="padding:16px 36px"]{justify-content:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]{flex-direction:column;justify-content:center;align-items:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:26px"]{justify-content:center;gap:12px 16px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:14px"]{justify-content:center}
   /* --- 홈 히어로 모바일 보정 --- */
   /* 히어로 최소 높이 완화 */
   [style*="min-height:540px"]{min-height:0 !important}
@@ -276,7 +277,7 @@ a{color:#E34802;text-decoration:none}a:hover{color:#FF6A2B}
     {name:"김해점",     region:"경남", addr:"김해시 (정확한 주소 준비중)",       lat:35.2285,   lng:128.8894,   exact:false},
     {name:"거제점",     region:"경남", addr:"거제시 (정확한 주소 준비중)",       lat:34.8806,   lng:128.6211,   exact:false}
   ];
-  function msg(t){var el=document.getElementById("ym-map");if(el)el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;text-align:center;font-size:14px;color:#7a6a52;line-height:1.6;font-family:\'Pretendard Variable\',sans-serif">'+t+'</div>';}
+  function msg(t){var el=document.getElementById("ym-map");if(el)el.innerHTML='<div style="display:flex;align-items:center;justify-content:center;height:100%;padding:24px;font-family:\'Pretendard Variable\',sans-serif"><div style="text-align:center;font-size:14px;color:#7a6a52;line-height:1.6">'+t+'</div></div>';}
   window.navermap_authFailure = function(){ if(!done){ pi++; loadSDK(); } };
   function loadSDK(){
     if(pi >= params.length){ msg("지도를 불러오지 못했습니다.<br>네이버 클라우드 콘솔에서 <b>Client ID</b>와 <b>웹 서비스 URL(도메인) 등록</b>을 확인해 주세요."); return; }

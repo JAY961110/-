@@ -60,7 +60,11 @@ input,textarea,select{font-family:'Pretendard Variable',Pretendard,system-ui,san
   [style*="padding:20px 36px"]{padding:16px 18px !important}
   [style*="padding:16px 36px"]{padding:12px 18px !important}
   /* 상단 메뉴: 가운데 정렬로 정돈 */
-  [style*="justify-content:space-between"][style*="padding:16px 36px"]{justify-content:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]{flex-direction:column;justify-content:center;align-items:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:26px"]{justify-content:center;gap:12px 16px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:14px"]{justify-content:center}
+  /* 05 카드: 1단 배치에서 2칸 차지 해제 (320px 가로 스크롤 방지) */
+  [style*="grid-column:span 2"]{grid-column:auto !important}
   /* --- 홈 히어로 모바일 보정 --- */
   /* 히어로 최소 높이 완화 */
   [style*="min-height:540px"]{min-height:0 !important}
@@ -127,7 +131,11 @@ input,textarea,select{font-family:'Pretendard Variable',Pretendard,system-ui,san
   [style*="padding:20px 36px"]{padding:16px 18px !important}
   [style*="padding:16px 36px"]{padding:12px 18px !important}
   /* 상단 메뉴: 가운데 정렬로 정돈 */
-  [style*="justify-content:space-between"][style*="padding:16px 36px"]{justify-content:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]{flex-direction:column;justify-content:center;align-items:center;gap:12px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:26px"]{justify-content:center;gap:12px 16px}
+  [style*="justify-content:space-between"][style*="padding:16px 36px"]>div[style*="gap:14px"]{justify-content:center}
+  /* 05 카드: 1단 배치에서 2칸 차지 해제 (320px 가로 스크롤 방지) */
+  [style*="grid-column:span 2"]{grid-column:auto !important}
   /* --- 홈 히어로 모바일 보정 --- */
   /* 히어로 최소 높이 완화 */
   [style*="min-height:540px"]{min-height:0 !important}
